@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
-    <artifactId>w5_01tuesday_JPA_relations</artifactId>
+    <artifactId>w5_02tuesday_JPA_entity_mapping</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>w5_01tuesday_JPA_relations</name>
+    <name>w5_02tuesday_JPA_entity_mapping</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

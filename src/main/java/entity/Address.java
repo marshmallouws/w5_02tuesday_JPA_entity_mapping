@@ -16,21 +16,20 @@ import javax.persistence.Id;
  * @author Bitten
  */
 @Entity
-public class Customer implements Serializable {
+public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String firstname;
-    private String lastname;
+    private String street;
+    private String city;
     
-    public Customer() {
-    }
+    public Address() {}
     
-    public Customer(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Address(String street, String city) {
+        this.street = street;
+        this.city = city;
     }
 
     public Integer getId() {
@@ -41,19 +40,20 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getStreet() {
+        return street;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getCity() {
+        return city;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setCity(String city) {
+        this.city = city;
     }
+    
 }

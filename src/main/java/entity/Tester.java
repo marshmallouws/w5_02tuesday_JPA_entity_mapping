@@ -15,25 +15,21 @@ import javax.persistence.Persistence;
  */
 public class Tester {
     public static void main(String[] args) {
+        Persistence.generateSchema("pu", null);
         EntityManagerFactory emf =
             Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         
-        em.getTransaction().begin();
+        
+        /*em.getTransaction().begin();
         
         Customer c = new Customer("Annika", "Ehlers");
         Customer c1 = new Customer("Peter", "Jakobsen");
-        Customer c2 = new Customer("Ole", "Jakobsen");
-        c.addHobby("Something");
-        c.addHobby("More nothing");
-        c.addPhone("12345678", "home");
-        c.addPhone("98765432", "cellphone");
         em.persist(c);
         em.persist(c1);
-        em.persist(c2);
         
         em.getTransaction().commit();
         em.close();
-        emf.close();
+        emf.close(); */
     }
 }

@@ -3,9 +3,10 @@
   <persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entity.Customer</class>
+    <class>entity.Address</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/w5customers"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/w5_02customers"/>
       <property name="javax.persistence.jdbc.user" value="dev"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="ax2"/>
