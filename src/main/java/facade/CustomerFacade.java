@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -56,7 +57,7 @@ public class CustomerFacade {
     public List<Customer> getCustomers() {
         EntityManager em = getEntityManager();
         try {
-            TypedQuery<Customer> query 
+            TypedQuery<Customer> query
                     = em.createQuery("SELECT c FROM Customer c", Customer.class);
             return query.getResultList();
         } finally {
@@ -80,7 +81,7 @@ public class CustomerFacade {
         EntityManager em = getEntityManager();
         try {
             //Need to find the customer before removing (cannot instantiate new object to remove!)
-            Customer c = em.find(Customer.class, id); 
+            Customer c = em.find(Customer.class, id);
             if (c == null) {
                 return null;
             }
@@ -88,31 +89,29 @@ public class CustomerFacade {
             em.remove(c);
             em.getTransaction().commit();
             return c;
-            
+
         } finally {
             em.close();
         }
     }
-    
-    /* Unsure of how to find the given customer that should be changed
-        but the code offers an example of how it should be solved.
-    
-    */
-    
+
+    /* I was unsure of what should be edited, so I just tested the way of
+        updating data.
+     */
     public Customer editCustomer(Customer cust) {
         EntityManager em = getEntityManager();
-        try { 
-            /*
+        try {
             em.getTransaction().begin();
-            cust.setFirstname("Lise");
-            em.getTransaction().commit();*/
+            Query query = em.createQuery("UPDATE Customer c SET c.firstname = 'Bitten' WHERE c.lastname = :last");
+            query.setParameter("last", cust.getLastname());
+            int rowCount = query.executeUpdate();
+            em.getTransaction().commit();
         } finally {
             em.close();
         }
         return null;
     }
-    
-    
+
     /*public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         CustomerFacade facade = CustomerFacade.getFacade(emf);
@@ -121,7 +120,8 @@ public class CustomerFacade {
         Customer cust = new Customer("Lise", "Lotte"); 
         System.out.println(facade.addCustomer(cust));
         //System.out.println(facade.deleteCustomer(3));
+        Customer c = new Customer("Hanne", "Ehlers");
+        facade.editCustomer(c);
         
-    }*/
-
+    } */
 }
