@@ -6,10 +6,16 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,6 +30,9 @@ public class Customer implements Serializable {
     private Integer id;
     private String firstname;
     private String lastname;
+    
+    @ManyToMany
+    private List<Address> addresses = new ArrayList<>(); 
     
     public Customer() {
     }
@@ -55,5 +64,13 @@ public class Customer implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+    
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+    
+    public void addAddress(Address address) {
+        addresses.add(address);
     }
 }

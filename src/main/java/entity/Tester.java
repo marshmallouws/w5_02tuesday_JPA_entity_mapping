@@ -21,15 +21,28 @@ public class Tester {
         EntityManager em = emf.createEntityManager();
         
         
-        /*em.getTransaction().begin();
+        em.getTransaction().begin();
         
         Customer c = new Customer("Annika", "Ehlers");
         Customer c1 = new Customer("Peter", "Jakobsen");
+        Address a = new Address("annikavej", "kbh");
+        Address a1 = new Address("petervej", "kbh");
+        
+        /*Testing for address (a) having more customers and customer (c) 
+          having more addresses*/
+        c.addAddress(a);
+        c.addAddress(a1);
+        c1.addAddress(a1);
+        a.addCustomer(c);
+        a.addCustomer(c1);
+        
         em.persist(c);
         em.persist(c1);
+        em.persist(a);
+        em.persist(a1);
         
         em.getTransaction().commit();
         em.close();
-        emf.close(); */
+        emf.close();
     }
 }

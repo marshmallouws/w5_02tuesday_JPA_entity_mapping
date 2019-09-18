@@ -6,10 +6,16 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 /**
  *
@@ -24,6 +30,9 @@ public class Address implements Serializable {
     private Integer id;
     private String street;
     private String city;
+    @ManyToMany(mappedBy = "addresses")
+    private List<Customer> customers = new ArrayList<>();
+    
     
     public Address() {}
     
@@ -54,6 +63,15 @@ public class Address implements Serializable {
 
     public void setCity(String city) {
         this.city = city;
+    }
+    
+    
+    public void addCustomer(Customer c) {
+        customers.add(c);
+    }
+    
+    public List<Customer> getCustomers() {
+        return customers;
     }
     
 }
